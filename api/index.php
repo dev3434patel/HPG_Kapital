@@ -6,6 +6,11 @@
  * It adjusts paths and includes the main application logic.
  */
 
+// Ensure proper output buffering and headers
+if (!headers_sent()) {
+    header('Content-Type: text/html; charset=UTF-8');
+}
+
 // Change to project root directory for consistent path resolution
 $rootDir = __DIR__ . '/..';
 if (is_dir($rootDir)) {
