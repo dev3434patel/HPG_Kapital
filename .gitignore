@@ -1,0 +1,25 @@
+# Environment
+.env
+
+# Data files (contains user submissions and admin data)
+/data/*.json
+!/data/.gitkeep
+
+# Storage
+/storage/*.json
+!/storage/.gitkeep
+
+# Logs
+*.log
+/logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
