@@ -10,5 +10,6 @@ Thumbs.db
 *.ps1
 *.sh
 *.md
-!README.md
+.htaccess
+**/.htaccess
 

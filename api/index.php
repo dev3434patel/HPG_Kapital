@@ -7,7 +7,10 @@
  */
 
 // Change to project root directory for consistent path resolution
-chdir(__DIR__ . '/..');
+$rootDir = __DIR__ . '/..';
+if (is_dir($rootDir)) {
+    chdir($rootDir);
+}
 
 // Configure secure session BEFORE starting session
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
@@ -30,7 +33,17 @@ error_reporting(E_ALL);
 ini_set('display_errors', 0); // Default to OFF for security
 ini_set('display_startup_errors', 0);
 ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/../storage/php_errors.log');
+// Use /tmp for error log in serverless environment (Vercel allows writes to /tmp)
+$errorLogPath = '/tmp/php_errors.log';
+if (is_writable('/tmp')) {
+    ini_set('error_log', $errorLogPath);
+} else {
+    // Fallback to project storage if /tmp not available
+    $storagePath = __DIR__ . '/../storage';
+    if (is_dir($storagePath) && is_writable($storagePath)) {
+        ini_set('error_log', $storagePath . '/php_errors.log');
+    }
+}
 
 // Load config
 try {
