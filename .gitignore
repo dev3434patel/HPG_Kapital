@@ -2,12 +2,14 @@
 .env
 
 # Data files (contains user submissions and admin data)
-/data/*.json
-!/data/.gitkeep
+# Note: These files are needed for deployment, so we keep them in git
+# /data/*.json
+# !/data/.gitkeep
 
 # Storage
-/storage/*.json
-!/storage/.gitkeep
+# Note: These files are needed for deployment, so we keep them in git
+# /storage/*.json
+# !/storage/.gitkeep
 
 # Logs
 *.log

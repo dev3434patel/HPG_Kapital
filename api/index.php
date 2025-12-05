@@ -12,8 +12,9 @@ if (!headers_sent()) {
 }
 
 // Change to project root directory for consistent path resolution
-$rootDir = __DIR__ . '/..';
-if (is_dir($rootDir)) {
+// This ensures all relative paths work correctly
+$rootDir = realpath(__DIR__ . '/..');
+if ($rootDir && is_dir($rootDir)) {
     chdir($rootDir);
 }
 
